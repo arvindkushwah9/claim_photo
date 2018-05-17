@@ -1,0 +1,72 @@
+<section class="dashboard my-listings payment-settings tickets-purchase create-listing">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="bhoechie-tab">
+          <div class="bhoechie-tab-content active">           
+            <h3 class="dashboard-column-title">Create New Claim</h3>
+            <p>A fast and easy way to capture your claim photos and documents</p>
+						<p>Claim no.: <%= current_user.claims.count + 1 %></p>
+						<p><%= current_user.email %></p>
+            <div class="contents order-confirmed-right">
+              <form accept-charset="UTF-8" action="/hosts/create_listing" enctype="multipart/form-data" id="create_event_form" method="post" name="create_event_form"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="Sr730HDVe5GYQn1S5tKyiVOmutbzMBmRa0zY+Pn6qf8="></div> 
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Photo upload/Capture</h3>
+                  </div>
+                  <div class="panel-body">                   
+
+                    <div class="form-group my-photos clearfix">
+                      <label for="">My Photos <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Here you can add up to 5 images that will be viewable as a gallery on your host page. It’s important to note that your featured photo will be the photo you added to your profile page."></i></label>                     
+                  
+                      <input type="hidden" style="border:0;" id="file_name" onclick="jQuery('#upload_datafile').click()" readonly="readonly" name="file_name" class="browse">
+                   
+                      <span class="uploaded-photo">
+                      <a href="#" class="upload-photo" onclick="document.getElementById('files').click()"><i class="fa fa-camera"></i>Upload
+                      </a>
+                      <input class="browse" data-max-file-size="2097152" id="files" multiple="multiple" name="image_attachments[avatar][]" onchange="validateFiles(this);showimagepreview(this);" type="file">
+                      </span>
+                       <output id="imgprvw" width="77" height="74">
+                       <img src="" alt="">
+
+       
+                    </output>
+                  	</div>
+										<div class="form-group">
+												<input type="checkbox" name="remember" id="remember" value="1"> I agree the
+												<a href="/terms">Terms and Conditions</a>
+											</div>                  
+										</div>
+                 		<div class="form-group">
+												<button class="btn btn-primary">Send</button>
+											</div>                  
+										</div>
+                </div>
+							</form>            
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style type="text/css">
+	input[type="file"] {
+    display: none;
+}
+</style>
+
+<script type="text/javascript">
+	  function showimagepreview(input) {
+    if (input.files && input.files[0]) {
+    var filerdr = new FileReader();
+    filerdr.onload = function(e) {
+
+    $('#imgprvw').attr('src', e.target.result);
+    }
+    filerdr.readAsDataURL(input.files[0]);
+    }
+    $('.image_upload').submit();
+  }
+</script>

@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+footer{bottom:0; position:fixed;}
+.main-body{margin-top: 80px;}
+section.dashboard .contents .note {
+    color: #7F7F7F;
+    font-size: 15px;
+}
+section.dashboard.create-listing .contents form .panel .panel-body .form-group.my-photos span.uploaded-photo {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.uploaded-photo {
+    margin-top: 7px;
+}
+.upload-photo {
+    width: 77px;
+    height: 74px;
+    border: 1px solid #DDD;
+    display: inline-block;
+    color: #BBB;
+    text-align: center;
+    position: relative;
+    padding-top: 40px;
+}
+
+section.dashboard.create-listing .contents form .panel .panel-body .form-group.my-photos span.uploaded-photo i {
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
+    top: 0;
+    font-size: 15px;
+    color: #FFF;
+}
