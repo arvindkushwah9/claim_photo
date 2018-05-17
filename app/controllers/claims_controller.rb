@@ -1,5 +1,7 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
+  
+  skip_before_action :verify_authenticity_token
 
   # GET /claims
   # GET /claims.json
@@ -28,6 +30,19 @@ class ClaimsController < ApplicationController
 
     respond_to do |format|
       if @claim.save
+        if params[:file_name] && params[:size] && params[:type] && params[:image_base64]
+          file_names = params[:file_name].split("&&&=>")
+          file_names.shift
+          sizes = params[:size].split("&&&=>")
+          sizes.shift
+          types = params[:type].split("&&&=>")
+          types.shift
+          bases = params[:image_base64].split("&&&=>")
+          bases.shift 
+          bases.each_with_index do |base|
+            @claim.attachments.create(:file=> base, :claim_id => @claim.id)
+          end
+         end
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
       else

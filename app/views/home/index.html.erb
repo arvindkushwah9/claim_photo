@@ -1,1 +1,5 @@
 <%= link_to "New Claim", new_claim_path, class: "btn btn-primary" %>
+<br><br>
+<%@attachments.each do |attach|%>
+	<%= image_tag attach.file, style: "{width: 77px; height:74px; }"%>
+<%end%>
